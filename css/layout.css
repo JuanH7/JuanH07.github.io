@@ -1,0 +1,248 @@
+/* =========================================================
+   LAYOUT.CSS — Estructura de secciones y contenedores
+   ========================================================= */
+
+.container {
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+section { position: relative; }
+
+/* --- Navegación --- */
+.site-nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: var(--z-nav);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-xs) var(--space-md);
+  background: color-mix(in srgb, var(--color-paper) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-secondary) 20%, transparent);
+  box-shadow: 0 4px 18px rgba(48, 45, 41, 0.06);
+}
+.site-nav .brand {
+  font-family: var(--font-heading);
+  font-size: var(--fs-md);
+  font-weight: 600;
+}
+.nav-links {
+  display: flex;
+  gap: var(--space-md);
+}
+.nav-links a {
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-small);
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+.nav-links a:hover,
+.nav-links a[aria-current="true"] { color: var(--color-accent-dark); background: var(--color-paper-warm); }
+.nav-toggle { display: none; }
+
+/* --- Hero / Portada --- */
+.hero {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  perspective: 2400px;
+  padding-top: 70px;
+}
+.book-stage {
+  width: min(900px, 90vw);
+  aspect-ratio: 4 / 3;
+  position: relative;
+  transform-style: preserve-3d;
+}
+.book-cover {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-large);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: var(--space-lg);
+  background: linear-gradient(145deg, var(--color-ink-soft) 0%, var(--color-secondary) 100%);
+  color: var(--color-paper);
+  border: 1px solid color-mix(in srgb, var(--color-accent-soft) 36%, transparent);
+  box-shadow: var(--shadow-lift);
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  transition: transform var(--transition-book);
+  backface-visibility: hidden;
+}
+.book-cover .hero-title { color: var(--color-paper); }
+.book-cover .hero-subtitle { color: var(--color-paper-light); }
+.book-cover .btn-primary {
+  background: var(--color-accent-soft);
+  color: var(--color-ink);
+  box-shadow: 0 8px 18px rgba(53, 45, 39, 0.2);
+}
+.book-cover .btn-primary:hover { background: var(--color-paper); color: var(--color-ink); }
+
+.book-interior {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-large);
+  background: var(--color-paper-dark);
+  box-shadow: var(--shadow-paper);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+.book-interior .page-left,
+.book-interior .page-right { padding: var(--space-lg) var(--space-md); display: flex; flex-direction: column; justify-content: center; }
+.book-interior .page-right { background: var(--color-paper); align-items: center; text-align: center; }
+
+.hero[data-open="true"] .book-cover { transform: rotateY(-178deg); }
+
+.scroll-cue {
+  position: absolute;
+  bottom: var(--space-md);
+  left: 50%;
+  translate: -50% 0;
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+/* --- Doble página genérica (intro) --- */
+.spread {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  background: var(--color-paper-dark);
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow-paper);
+  padding: var(--space-xl) var(--space-lg);
+  align-items: center;
+}
+.spread .page-art {
+  aspect-ratio: 4/5;
+  border-radius: var(--radius-medium);
+  background: var(--color-placeholder-bg);
+  border: 2px dashed var(--color-placeholder-border);
+  display: grid;
+  place-items: center;
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: var(--space-md);
+}
+.spread .page-art.intro-quote {
+  aspect-ratio: 4/5;
+  padding: var(--space-lg);
+  background: linear-gradient(145deg, var(--color-paper-dark), var(--color-paper-warm));
+  border: 1px solid color-mix(in srgb, var(--color-accent) 30%, transparent);
+  color: var(--color-ink);
+  font-family: var(--font-heading);
+  font-size: var(--fs-md);
+}
+.intro-quote span { display: block; margin-top: var(--space-sm); color: var(--color-accent-dark); font: 600 var(--fs-sm) var(--font-body); }
+.book-covers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+.book-covers figure {
+  min-width: 0;
+  margin: 0;
+  padding: var(--space-sm);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 24%, var(--color-paper-dark));
+  border-radius: var(--radius-small);
+  background: var(--color-paper-warm);
+  text-align: center;
+}
+.book-covers img { width: 100%; height: clamp(280px, 42vw, 560px); object-fit: contain; }
+.book-covers figcaption { margin-top: var(--space-xs); color: var(--color-accent-dark); font-weight: 600; }
+
+/* --- Bandas de color del cuento --- */
+#introduccion { background: var(--color-paper-light); }
+#personajes { background: var(--color-paper); }
+#creacion { background: var(--color-paper-warm); }
+#historia { background: var(--color-paper-dark); }
+#galeria { background: var(--color-paper-light); }
+
+/* --- Secciones genéricas --- */
+.section-inner {
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding: var(--space-xl) var(--space-md);
+}
+.section-head {
+  max-width: 60ch;
+  margin-bottom: var(--space-lg);
+}
+
+/* --- Grid de personajes --- */
+.characters-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+/* --- Línea de tiempo del proceso --- */
+.process-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* --- Escenas de la historia --- */
+.story-scenes { display: flex; flex-direction: column; gap: var(--space-lg); }
+.scene {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: var(--space-lg);
+  align-items: center;
+}
+.scene:nth-child(even) { grid-template-columns: 1.1fr 0.9fr; }
+.scene:nth-child(even) .scene-art { order: 2; }
+.scene-art {
+  aspect-ratio: 4/3;
+  border-radius: var(--radius-medium);
+  background: var(--color-paper-warm);
+  border: 0;
+  box-shadow: var(--shadow-paper-soft);
+  display: grid;
+  place-items: center;
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: var(--space-sm);
+}
+.scene-art.has-image { padding: 0; overflow: hidden; background: var(--color-paper-light); border: 1px solid color-mix(in srgb, var(--color-accent) 22%, transparent); }
+.scene-art img { width: 100%; height: 100%; object-fit: contain; }
+.scene:nth-child(4n + 2) .scene-art { background: var(--color-paper-dark); }
+.scene:nth-child(4n + 3) .scene-art { background: var(--color-accent-soft); }
+.scene:nth-child(4n) .scene-art { background: #B9694F; color: var(--color-paper); }
+
+/* --- Galería --- */
+.gallery-filters { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin-bottom: var(--space-md); }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: var(--space-sm);
+}
+.story-narration { margin: 0 0 var(--space-lg); }
+.story-narration audio { display: block; width: min(100%, 520px); margin-inline: auto; accent-color: var(--color-accent); }
+
+/* --- Cierre --- */
+.closing {
+  text-align: center;
+  padding: var(--space-2xl) var(--space-md);
+  background: var(--color-ink-soft);
+  color: var(--color-paper);
+  border-radius: var(--radius-large) var(--radius-large) 0 0;
+}
+.closing h2 { color: var(--color-paper); }
+.closing-actions { display: flex; gap: var(--space-sm); justify-content: center; flex-wrap: wrap; margin-top: var(--space-md); }
+
+footer.site-footer {
+  text-align: center;
+  padding: var(--space-md);
+  font-size: var(--fs-xs);
+  color: var(--color-paper);
+  background: var(--color-ink);
+}

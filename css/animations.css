@@ -1,0 +1,57 @@
+/* =========================================================
+   ANIMATIONS.CSS
+   ========================================================= */
+
+.book-stage { animation: book-arrive 700ms cubic-bezier(.22,.61,.36,1) both; }
+@keyframes book-arrive {
+  from { opacity: 0; transform: translateY(18px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--transition-smooth), transform var(--transition-smooth);
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes dog-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes dog-celebrate {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
+}
+@keyframes dog-petted {
+  0%, 100% { transform: translateY(0) scale(1); }
+  45% { transform: translateY(-7px) scale(1.06) rotate(-4deg); }
+  70% { transform: translateY(1px) scale(1.02) rotate(3deg); }
+}
+@keyframes dog-bark {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  25% { transform: translateX(-3px) rotate(-6deg); }
+  50% { transform: translateX(3px) rotate(6deg); }
+  75% { transform: translateX(-2px) rotate(-4deg); }
+}
+
+.scroll-cue svg { animation: cue-drop 1.6s ease infinite; }
+@keyframes cue-drop {
+  0%, 100% { transform: translateY(0); opacity: .5; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
+
+/* Respeta la preferencia de movimiento reducido del usuario */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] { opacity: 1; transform: none; }
+  .hero[data-open="true"] .book-cover { transition: none; }
+}

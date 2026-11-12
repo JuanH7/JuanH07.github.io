@@ -1,0 +1,70 @@
+/* =========================================================
+   VARIABLES.CSS — Sistema de diseño editable
+   Cambia estos valores para ajustar toda la identidad visual
+   sin tocar el resto del código.
+   ========================================================= */
+
+:root {
+  color-scheme: light;
+
+  /* Paleta principal */
+  --color-paper:        #FFF5DF;
+  --color-paper-dark:   #EBDDC2;
+  --color-paper-light:  #FFFAEE;
+  --color-paper-warm:   #F5E9D1;
+  --color-ink:           #352D27;
+  --color-ink-soft:      #5B4033;
+  --color-accent:        #C9563F;
+  --color-accent-dark:   #A94031;
+  --color-accent-soft:   #EFC66D;
+  --color-secondary:     #A45C3F;
+  --color-tertiary:      #766B45;
+  --color-background:    var(--color-paper);
+  --color-text:          var(--color-ink);
+  --color-text-muted:    #68594A;
+  --color-placeholder-bg:#EEE5D2;
+  --color-placeholder-border: #AA8B6A;
+
+  /* Tipografía */
+  --font-heading: "Fraunces", "Georgia", serif;
+  --font-body: "Work Sans", -apple-system, sans-serif;
+
+  --fs-xs:   clamp(0.75rem, 0.72rem + 0.15vw, 0.85rem);
+  --fs-sm:   clamp(0.9rem, 0.87rem + 0.15vw, 1rem);
+  --fs-base: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --fs-md:   clamp(1.25rem, 1.15rem + 0.4vw, 1.6rem);
+  --fs-lg:   clamp(1.8rem, 1.5rem + 1.2vw, 2.6rem);
+  --fs-xl:   clamp(2.4rem, 1.9rem + 2vw, 4rem);
+  --fs-xxl:  clamp(3rem, 2.2rem + 3vw, 5.5rem);
+
+  /* Espaciado */
+  --space-2xs: 0.4rem;
+  --space-xs:  0.75rem;
+  --space-sm:  1.25rem;
+  --space-md:  2rem;
+  --space-lg:  3.5rem;
+  --space-xl:  6rem;
+  --space-2xl: 9rem;
+
+  /* Bordes y radios */
+  --radius-small:  6px;
+  --radius-medium: 14px;
+  --radius-large:  28px;
+
+  /* Sombras — simulan papel elevado */
+  --shadow-paper:      0 18px 40px -12px rgba(48, 45, 41, 0.24);
+  --shadow-paper-soft: 0 8px 20px -8px rgba(48, 45, 41, 0.15);
+  --shadow-lift:       0 30px 60px -20px rgba(48, 45, 41, 0.35);
+
+  /* Transiciones */
+  --transition-fast:   200ms ease;
+  --transition-smooth: 500ms cubic-bezier(.22,.61,.36,1);
+  --transition-book:   1100ms cubic-bezier(.65,0,.35,1);
+
+  /* Capas */
+  --z-nav: 50;
+  --z-dog: 60;
+  --z-modal: 100;
+
+  --content-max: 1180px;
+}

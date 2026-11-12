@@ -1,0 +1,8 @@
+/* styles.css — Punto de entrada único de estilos.
+   Importa los módulos en el orden correcto. */
+@import url("variables.css");
+@import url("base.css");
+@import url("layout.css");
+@import url("components.css");
+@import url("animations.css");
+@import url("responsive.css");

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>¡Que llueva! — Un cuento pop-up de Guatapé</title>
+<meta name="description" content="Sebastián, Valentina, Ángel y Buffy convierten una tarde de lluvia en Guatapé en una aventura de imaginación y amistad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div id="reading-progress" class="progress-indicator" style="width:0%"></div>
+
+<header class="site-nav">
+  <a class="brand" href="#inicio">¡Que llueva!</a>
+  <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  <nav class="nav-links" data-open="false" aria-label="Navegación principal">
+    <a href="#inicio">Inicio</a>
+    <a href="#introduccion">El universo</a>
+    <a href="#personajes">Personajes</a>
+    <a href="#creacion">Creación</a>
+    <a href="#historia">Historia</a>
+    <a href="#galeria">Galería</a>
+    <a href="comic.html">Mini cómic</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ HERO / PORTADA ============ -->
+  <section class="hero" id="inicio">
+    <div class="book-stage">
+      <div class="book-interior">
+        <div class="page-left">
+          <p class="section-eyebrow">Un cuento de Guatapé</p>
+          <h2 id="universo">Una tarde de lluvia se vuelve aventura</h2>
+          <p>Sebastián, sus amigos Valentina y Ángel, y Buffy descubren que la imaginación no se acaba cuando se comparte.</p>
+          <a class="btn btn-secondary" href="#personajes">Conoce a los personajes</a>
+        </div>
+        <div class="page-right">
+          <div class="art" style="width:100%;aspect-ratio:3/4;">«A la lluvia no se le pelea, se le baila»<br><br>Doña Mercedes</div>
+        </div>
+      </div>
+      <div class="book-cover">
+        <div>
+          <p class="section-eyebrow" style="color:var(--color-accent-soft)">Un cuento pop-up</p>
+          <h1 class="hero-title">¡Que llueva!</h1>
+          <p class="hero-subtitle" style="max-width:46ch;margin-inline:auto;">Una aventura de amistad e imaginación en Guatapé</p>
+          <button id="open-book-btn" class="btn btn-primary" aria-expanded="false">Abrir el libro</button>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      <span>Desplázate para descubrir más</span>
+    </div>
+  </section>
+
+  <!-- ============ INTRODUCCIÓN AL UNIVERSO ============ -->
+  <section id="introduccion" aria-labelledby="intro-title">
+    <div class="section-inner">
+      <div class="spread" data-reveal>
+        <div>
+          <p class="section-eyebrow">Introducción</p>
+          <h2 id="intro-title">Una tarde de lluvia en Guatapé</h2>
+          <p class="lede">Sebastián pasa las vacaciones con su abuela Mercedes en un pueblo de fachadas coloridas. Cuando un aguacero y un apagón frustran los planes de él, Valentina y Ángel, los objetos de la sala abren la puerta a un viaje por el cielo. Con la ayuda de un viajero inesperado, los amigos descubrirán que la imaginación se cuida y crece cuando se comparte.</p>
+        </div>
+        <div class="page-art intro-quote">«Aburrirse es solo para el que no sabe inventar.»<span>Doña Mercedes</span></div>
+      </div>
+      <div class="book-covers" data-reveal aria-label="Portada y contraportada del libro">
+        <figure>
+          <img src="assets/img/Portada.png" alt="Portada ilustrada del libro ¡Que llueva!" loading="lazy">
+          <figcaption>Portada</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/contraportada.png" alt="Contraportada con la sinopsis de ¡Que llueva!" loading="lazy">
+          <figcaption>Contraportada</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PERSONAJES ============ -->
+  <section id="personajes" aria-labelledby="personajes-title">
+    <div class="section-inner">
+      <div class="section-head" data-reveal>
+        <p class="section-eyebrow">Los protagonistas</p>
+        <h2 id="personajes-title">Seis personajes, un mismo universo</h2>
+        <p>Conoce a Sebastián, su abuela Mercedes, sus amigos Valentina y Ángel, al viajero que llega con la lluvia y a Buffy, el perro de la casa.</p>
+      </div>
+      <div id="characters-grid" class="characters-grid"></div>
+    </div>
+  </section>
+
+  <!-- Modal de personaje -->
+  <div id="character-modal" class="modal-overlay" data-visible="false" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Cerrar">✕</button>
+      <div class="modal-art"></div>
+      <p class="id-tag modal-role"></p>
+      <h2 id="modal-title"></h2>
+      <p class="modal-description"></p>
+      <h3 style="font-size:var(--fs-base)">Personalidad</h3>
+      <p class="modal-personality"></p>
+      <ul class="modal-traits"></ul>
+      <h3 style="font-size:var(--fs-base);margin-top:var(--space-md)">En esta historia</h3>
+      <div class="modal-process"></div>
+    </div>
+  </div>
+
+  <!-- ============ PROCESO DE CREACIÓN ============ -->
+  <section id="creacion" aria-labelledby="creacion-title">
+    <div class="section-inner">
+      <div class="section-head" data-reveal>
+        <p class="section-eyebrow">Detrás de cada ilustración</p>
+        <h2 id="creacion-title">Del boceto a la página final</h2>
+        <p>Explora los montajes generales y compara cada una de las once páginas del libro pop-up.</p>
+      </div>
+      <div data-reveal>
+        <h3 style="font-size:var(--fs-base)">Montaje de personajes</h3>
+        <div class="compare-slider">
+          <img class="layer before" src="assets/img/Todos_Bosetos.png" alt="Bocetos originales de los seis personajes" loading="lazy">
+          <img class="layer after" src="assets/img/Todos_listos.png" alt="Ilustraciones terminadas de los seis personajes" loading="lazy">
+          <label class="visually-hidden" for="character-compare">Desliza para comparar los bocetos y las ilustraciones terminadas</label>
+          <input id="character-compare" type="range" min="0" max="100" value="50" aria-label="Desliza para comparar los bocetos y las ilustraciones terminadas">
+        </div>
+        <div class="compare-labels" aria-hidden="true"><span>Bocetos</span><span>Ilustraciones finales</span></div>
+      </div>
+      <div class="book-page-gallery" data-reveal>
+        <h3>Páginas del libro pop-up</h3>
+        <div id="book-page-comparisons" class="book-page-comparisons"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HISTORIA ============ -->
+  <section id="historia" aria-labelledby="historia-title">
+    <div class="section-inner">
+      <div class="section-head" data-reveal>
+        <p class="section-eyebrow">El relato</p>
+        <h2 id="historia-title">La historia del libro</h2>
+        <p>Un aguacero, un apagón y una telaraña rota reúnen a una familia, tres amigos y un visitante inesperado.</p>
+      </div>
+      <div class="story-narration" data-reveal>
+        <audio id="story-audio" controls preload="none" aria-label="Narración de la historia de ¡Que llueva!">
+          <source src="assets/audio/Historia.mpeg" type="audio/mpeg">
+          Tu navegador no admite la reproducción de audio.
+        </audio>
+      </div>
+      <div id="story-scenes" class="story-scenes"></div>
+    </div>
+  </section>
+
+  <!-- ============ GALERÍA ============ -->
+  <section id="galeria" aria-labelledby="galeria-title">
+    <div class="section-inner">
+      <div class="section-head" data-reveal>
+        <p class="section-eyebrow">Archivo visual</p>
+        <h2 id="galeria-title">Galería del universo</h2>
+        <p>Los seis personajes que dan vida a la aventura de Guatapé.</p>
+      </div>
+      <div id="gallery-filters" class="gallery-filters" role="group" aria-label="Filtrar galería por categoría"></div>
+      <div id="gallery-grid" class="gallery-grid"></div>
+    </div>
+  </section>
+
+  <!-- ============ CIERRE ============ -->
+  <section id="cierre" class="closing" aria-labelledby="cierre-title">
+    <h2 id="cierre-title">La imaginación vuelve a encenderse</h2>
+    <p style="max-width:50ch;margin-inline:auto;opacity:.9">La lluvia paró, volvió la luz y, sobre Guatapé, brilló una telaraña de estrellas. En el patio, cada semilla quedó sembrada como una nueva idea.</p>
+    <div class="closing-actions">
+      <button class="btn btn-primary" data-scroll-to="#inicio">Volver al inicio</button>
+      <button class="btn btn-secondary" style="border-color:var(--color-paper);color:var(--color-paper)" data-scroll-to="#personajes">Explorar personajes de nuevo</button>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>¡Que llueva! — Un cuento de amistad e imaginación en Guatapé.</p>
+</footer>
+
+<!-- ============ GUÍA: EL PERRO ============ -->
+<div class="dog-guide">
+  <div class="dog-bubble" data-visible="false" role="status" aria-live="polite">
+    <button class="dog-bubble-close" aria-label="Cerrar mensaje">✕</button>
+    <p class="dog-bubble-text"></p>
+  </div>
+  <button class="dog-avatar-btn" data-state="idle" aria-label="Abrir la guía del recorrido">
+    <img src="assets/img/buffy_info.png" alt="">
+  </button>
+</div>
+
+<button class="back-to-top" type="button" data-scroll-to="#inicio" aria-label="Volver al inicio" title="Volver al inicio">
+  <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="js/data.js"></script>
+<script src="js/dog-guide.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/characters.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+/* =========================================================
+   RESPONSIVE.CSS
+   ========================================================= */
+
+/* --- Tablet --- */
+@media (max-width: 900px) {
+  .characters-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .spread, .scene, .scene:nth-child(even) {
+    grid-template-columns: 1fr;
+  }
+  .book-covers { gap: var(--space-sm); }
+  .scene:nth-child(even) .scene-art { order: 0; }
+  .book-interior { grid-template-columns: 1fr; }
+  .book-interior .page-left { padding-bottom: 0; }
+}
+
+/* --- Móvil --- */
+@media (max-width: 640px) {
+  .container, .section-inner { padding-inline: var(--space-sm); }
+  .characters-grid { grid-template-columns: 1fr; }
+  .book-covers { grid-template-columns: 1fr; }
+  .book-page-comparisons { grid-template-columns: 1fr; }
+
+  .nav-links {
+    position: fixed;
+    inset: 64px var(--space-sm) auto auto;
+    background: var(--color-paper);
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-sm);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-paper);
+    transform: translateY(-12px);
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition-fast);
+  }
+  .nav-links[data-open="true"] { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .nav-toggle {
+    display: block;
+    font-size: 1.6rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .hero { padding-top: 90px; }
+  .book-stage { aspect-ratio: 3/4; }
+
+  .dog-guide {
+    --dog-avatar-size: clamp(78px, 18vw, 90px);
+    right: var(--space-2xs);
+    bottom: var(--space-2xs);
+    display: block;
+    width: var(--dog-avatar-size);
+    height: var(--dog-avatar-size);
+  }
+  .modal-overlay .dog-guide { width: var(--dog-avatar-size); height: var(--dog-avatar-size); right: var(--space-2xs); bottom: var(--space-2xs); }
+  .dog-avatar-btn,
+  .modal-overlay .dog-avatar-btn { position: absolute; right: 0; bottom: 0; width: var(--dog-avatar-size); height: var(--dog-avatar-size); }
+  .dog-bubble,
+  .modal-overlay .dog-bubble {
+    position: fixed;
+    right: var(--space-2xs);
+    bottom: calc(var(--space-2xs) + var(--dog-avatar-size) + var(--space-xs));
+    left: auto;
+    max-width: calc(100vw - var(--dog-avatar-size) - 112px);
+  }
+  .back-to-top { left: var(--space-xs); bottom: var(--space-xs); width: 44px; height: 44px; }
+
+  .closing { border-radius: var(--radius-medium) var(--radius-medium) 0 0; padding: var(--space-xl) var(--space-sm); }
+}
